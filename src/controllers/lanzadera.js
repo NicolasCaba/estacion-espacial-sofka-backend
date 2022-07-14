@@ -1,3 +1,4 @@
+const { matchedData } = require('express-validator');
 const lanzaderasModel = require('../models/lanzadera');
 
 /**
@@ -22,7 +23,7 @@ const getAllNavesLanzaderas = async (req, res) => {
  */
 const createNaveLanzadera = async (req, res) => {
   try {
-    const nave = req.body;
+    const nave = matchedData(req);
     
     const response = await lanzaderasModel.create(nave);
 
