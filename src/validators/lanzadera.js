@@ -48,4 +48,20 @@ const validatorCreateNaveLanzadera = [
   }
 ]
 
-module.exports = { validatorCreateNaveLanzadera };
+const validatorGetNaveByName = [
+  check('name')
+    .exists()
+    .notEmpty()
+    .isString(),
+  (req, res, next) => {
+    try {
+      validationResult(req).throw();
+      return next();
+    } catch (error) {
+      res.status(400);
+      res.send({ errors: error.array(), message: 'validation name error' });
+    }
+  }
+]
+
+module.exports = { validatorCreateNaveLanzadera, validatorGetNaveByName };

@@ -48,4 +48,37 @@ const validatorCreateNaveTripulada = [
   }
 ]
 
-module.exports = { validatorCreateNaveTripulada };
+const validatorGetNave = [
+  check('mongoid')
+    .exists()
+    .notEmpty()
+    .isMongoId(),
+  (req, res, next) => {
+    try {
+      validationResult(req).throw();
+      return next();
+    } catch (error) {
+      res.status(400);
+      res.send({ errors: error.array(), message: 'validation id error' });
+    }
+  }
+]
+
+const validatorGetNaveByName = [
+  check('name')
+    .exists()
+    .notEmpty()
+    .isString(),
+  (req, res, next) => {
+    try {
+      validationResult(req).throw();
+      return next();
+    } catch (error) {
+      res.status(400);
+      res.send({ errors: error.array(), message: 'validation name error' });
+    }
+  }
+]
+
+
+module.exports = { validatorCreateNaveTripulada, validatorGetNave, validatorGetNaveByName };

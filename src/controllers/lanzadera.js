@@ -8,11 +8,28 @@ const lanzaderasModel = require('../models/lanzadera');
  */
 const getAllNavesLanzaderas = async (req, res) => {
   try {
-    let lanzaderas = await lanzaderasModel.find();
+    let lanzaderas = await lanzaderasModel.findAllData({});
 
     res.status(200).send(lanzaderas);
   } catch (error) {
     res.status(403).send({error, message: 'Cannot get lanzaderas'})
+  }
+}
+
+/**
+ * GET nave by name
+ * @param {Express require} req 
+ * @param {Express response} res 
+ */
+ const getNaveLanzaderaByName = async (req, res) => {
+  try {
+    req = matchedData(req);
+    const { name } = req;
+    const nameRegEx = new RegExp(name);
+    const naves = await lanzaderasModel.findAllDataByName(nameRegEx);
+    res.status(200).send(naves);
+  } catch (error) {
+    res.status(403).send({error, message: 'Cannot get naves by name'})
   }
 }
 
@@ -33,4 +50,4 @@ const createNaveLanzadera = async (req, res) => {
   }
 }
 
-module.exports = { getAllNavesLanzaderas, createNaveLanzadera };
+module.exports = { getAllNavesLanzaderas, createNaveLanzadera, getNaveLanzaderaByName };

@@ -8,11 +8,44 @@ const TripuladasModel = require('./../models/tripulada');
  */
 const getAllNavesTripuladas = async (req, res) => {
   try {
-    let tripuladas = await TripuladasModel.find();
+    let tripuladas = await TripuladasModel.findAllData({});
 
     res.status(200).send(tripuladas);
   } catch (error) {
     res.status(403).send({error, message: 'Cannot get naves tripuladas'})
+  }
+}
+
+/**
+ * GET nave by id
+ * @param {Express require} req 
+ * @param {Express response} res 
+ */
+ const getNaveTripulada = async (req, res) => {
+  try {
+    req = matchedData(req);
+    const { mongoid } = req;
+    const nave = await TripuladasModel.findOneDataById(mongoid);
+    res.status(200).send(nave);
+  } catch (error) {
+    res.status(403).send({error, message: 'Cannot get nave by id'})
+  }
+}
+
+/**
+ * GET nave by name
+ * @param {Express require} req 
+ * @param {Express response} res 
+ */
+ const getNaveTripuladaByName = async (req, res) => {
+  try {
+    req = matchedData(req);
+    const { name } = req;
+    const nameRegEx = new RegExp(name);
+    const naves = await TripuladasModel.findAllDataByName(nameRegEx);
+    res.status(200).send(naves);
+  } catch (error) {
+    res.status(403).send({error, message: 'Cannot get naves by name'})
   }
 }
 
@@ -33,4 +66,4 @@ const createNaveTripulada = async (req, res) => {
   }
 }
 
-module.exports = { getAllNavesTripuladas, createNaveTripulada };
+module.exports = { getAllNavesTripuladas, createNaveTripulada, getNaveTripulada ,getNaveTripuladaByName };

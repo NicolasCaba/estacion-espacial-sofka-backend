@@ -18,4 +18,15 @@ const createAstronauta = async (req, res) => {
   }
 }
 
-module.exports = { createAstronauta };
+const getAstronauta = async (req, res) => {
+  try {
+    req = matchedData(req);
+    const { mongoid } = req;
+    const storage = await astronautasModel.findById(mongoid, {"__v": 0, "createdAt": 0, "updatedAt": 0});
+    res.status(200).send(storage);
+  } catch (error) {
+    res.status(403).send({error, message: 'Cannot get storage by id'})
+  }
+}
+
+module.exports = { createAstronauta, getAstronauta };
