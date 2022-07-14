@@ -24,6 +24,8 @@ app.use(express.static(`./src/public`));
 app.use('/api/naves/lanzadera', require('./src/routes/lanzadera'));
 app.use('/api/naves/no-tripulada', require('./src/routes/no-tripulada'));
 app.use('/api/naves/tripulada', require('./src/routes/tripulada'));
+app.use('/api/astronautas', require('./src/routes/astronauta'));
+app.use('/api/storage', require('./src/routes/storage'));
 
 
 // App listen

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const NoTripuladasSchema = new Schema(
+const TripuladasSchema = new Schema(
   {
     nombre: {
       type: String
@@ -24,11 +24,11 @@ const NoTripuladasSchema = new Schema(
     estado: {
       type: String
     },
-    fotos: {
-      type: [String]
-    },
     image_id: {
       type: mongoose.Types.ObjectId
+    },
+    equipo: {
+      type: [mongoose.Types.ObjectId]
     }
   },
   {
@@ -36,4 +36,4 @@ const NoTripuladasSchema = new Schema(
   }
 )
 
-module.exports = mongoose.model('no-tripuladas', NoTripuladasSchema);
+module.exports = mongoose.model('tripuladas', TripuladasSchema);

@@ -1,6 +1,11 @@
 const { matchedData } = require('express-validator');
 const noTripuladasModel = require('./../models/no-tripulada');
 
+/**
+ * Get all naves no tripuladas
+ * @param {Express request} req 
+ * @param {Express response} res 
+ */
 const getAllNavesNoTripuladas = async (req, res) => {
   try {
     let noTripuladas = await noTripuladasModel.find();
@@ -11,6 +16,11 @@ const getAllNavesNoTripuladas = async (req, res) => {
   }
 }
 
+/**
+ * Create new nave no tripulada
+ * @param {Express request} req 
+ * @param {Express response} res 
+ */
 const createNaveNoTripulada = async (req, res) => {
   try {
     const nave = matchedData(req);
