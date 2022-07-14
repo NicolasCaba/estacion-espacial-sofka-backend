@@ -21,7 +21,9 @@ app.use(express.static(`./src/public`));
 
 
 // Routes
-app.use('api/naves', require('./src/routes/naves'));
+app.use('/api/naves/lanzadera', require('./src/routes/lanzadera'));
+app.use('/api/naves/no-tripulada', require('./src/routes/no-tripulada'));
+app.use('/api/naves/tripulada', require('./src/routes/tripulada'));
 
 
 // App listen
