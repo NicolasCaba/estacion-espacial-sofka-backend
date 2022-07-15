@@ -13,6 +13,8 @@ Dependencias:
 
  npm start para iniciar servidor
 
+base de datos en mongoAtlas
+
 documentacion de api https://documenter.getpostman.com/view/18193262/UzQuQRbi
 
 api https://estacion-espacial-api.herokuapp.com/
