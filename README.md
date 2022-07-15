@@ -11,9 +11,11 @@ Dependencias:
  -> express-validator
  -> dotenv
 
- npm start para iniciar servidor
+npm install para instalar dependencias
 
-base de datos en mongoAtlas
+npm start para iniciar servidor
+
+ejemplo de las variable de entorno .env.example
 
 documentacion de api https://documenter.getpostman.com/view/18193262/UzQuQRbi
 
