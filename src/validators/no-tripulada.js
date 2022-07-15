@@ -9,6 +9,10 @@ const validatorCreateNaveNoTripulada = [
     .exists()
     .notEmpty()
     .isString(),
+  check('tipo')
+    .exists()
+    .notEmpty()
+    .isString(),
   check('tipoDeCombustible')
     .exists()
     .notEmpty()

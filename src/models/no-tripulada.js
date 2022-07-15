@@ -9,6 +9,9 @@ const NoTripuladasSchema = new Schema(
     categoria: {
       type: String
     },
+    tipo: {
+      type: String
+    },
     tipoDeCombustible: {
       type: String
     },
